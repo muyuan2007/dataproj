@@ -1,5 +1,6 @@
 import { Typography, Select, MenuItem, FormControl, Grid, Button } from "@material-ui/core"
 import Link from "next/link"
+import { useEffect } from "react"
 
 const HomePage = (props) => {
 
@@ -7,6 +8,10 @@ const HomePage = (props) => {
         // console.log(document.getElementById("playerCountSelect").parentElement.children[1].value)
         localStorage.setItem("playerCount", document.getElementById("playerCountSelect").value)
     }
+
+    useEffect(() => {
+        localStorage.setItem("playerCount", 2)
+    })
 
     return (<div style={{width: '100vw', height: '100vh', backgroundColor: "#f4f4f4"}}>
         <Typography style={{fontSize: 60, textAlign: 'center', width: '100%', position: 'relative', top: 100}}>Welcome to Capital Expedition!</Typography>

@@ -254,7 +254,7 @@ const Game = (props) => {
 
         let newAvailInvestments = []
         
-        Object.values(investments).forEach(investment => {if (investment.value <= 80000) {newAvailInvestments.push(investment.name)}})
+        Object.values(investments).forEach(investment => {if (investment.value <= startingAmount) {newAvailInvestments.push(investment.name)}})
         
         
         setInvestmentInputState(newAvailInvestments[0])

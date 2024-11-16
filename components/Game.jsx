@@ -4,8 +4,6 @@ import {Autocomplete} from "@material-ui/lab"
 import { CallReceived, Check} from "@material-ui/icons"
 
 
-const token = "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"
-
 const baseInvestmentInfo = {
     1: {type: "re", name: "Multifamily", value: 15000, image: "mf_res"},
     2: {type: "re", name: "Office", value: 40000, image: "office"},

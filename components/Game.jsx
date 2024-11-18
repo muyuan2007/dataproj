@@ -247,7 +247,7 @@ const Game = (props) => {
         let pInfo = []
         
         for (let i = 0; i < parseInt(localStorage.getItem("playerCount")); i++) {
-            pInfo.push({playerNum: pInfo.length + 1, netWorth: startingAmount, cash: startingAmount, investments: {re: 0, it: 0, fx: 0, cc: 0}})
+            pInfo.push({playerNum: pInfo.length + 1, cash: startingAmount, investments: {re: 0, it: 0, fx: 0, cc: 0}})
         }
 
         setPlayersInfo([...pInfo])

@@ -5,20 +5,20 @@ import { CallReceived, Check} from "@material-ui/icons"
 
 
 const baseInvestmentInfo = {
-    1: {type: "re", name: "Multifamily", value: 15000, image: "mf_res"},
-    2: {type: "re", name: "Office", value: 40000, image: "office"},
-    3: {type: "re", name: "Casino", value: 85000, image: "ent_dev"},
-    4: {type: "re", name: "Factory", value: 150000, image: "indst"},
-    5: {type: "it", name: "Intel (INTC)", value: 1000, image: "intel"},
-    6: {type: "it", name: "Cisco (CSCO)", value: 3000, image: "cisco"},
-    7: {type: "it", name: "NVIDIA (NVDA)", value: 7000, image: "nvidia"},
-    8: {type: "it", name: "Microsoft (MSFT)", value: 14000, image: "mf_res"},
-    9: {type: "fx", name: "Yuan (CNY)", value: 4000, image: "cny"},
-    10: {type: "fx", name: "Euro (EUR)", value: 24000, image: "euro"},
-    11: {type: "cc", name: "Dogecoin", value: 2000, image: "dogecoin"},
-    12: {type: "cc", name: "Litecoin", value: 5000, image: "litecoin"},
-    13: {type: "cc", name: "Ethereum", value: 10000, image: "ethereum"},
-    14: {type: "cc", name: "Bitcoin", value: 60000, image: "bitcoin"}
+    1: {type: "re", name: "Multifamily", value: 15000},
+    2: {type: "re", name: "Office", value: 40000},
+    3: {type: "re", name: "Casino", value: 85000},
+    4: {type: "re", name: "Factory", value: 150000},
+    5: {type: "it", name: "Intel (INTC)", value: 1000},
+    6: {type: "it", name: "Cisco (CSCO)", value: 3000},
+    7: {type: "it", name: "NVIDIA (NVDA)", value: 7000},
+    8: {type: "it", name: "Microsoft (MSFT)", value: 14000},
+    9: {type: "fx", name: "Yuan (CNY)", value: 4000},
+    10: {type: "fx", name: "Euro (EUR)", value: 24000},
+    11: {type: "cc", name: "Dogecoin", value: 2000},
+    12: {type: "cc", name: "Litecoin", value: 5000},
+    13: {type: "cc", name: "Ethereum", value: 10000},
+    14: {type: "cc", name: "Bitcoin", value: 60000}
 }
 
 const investmentInfoToIds = {
@@ -42,16 +42,16 @@ const labels = ["Player", "Cash", "Real Estate", "I.T.", "Foreign Ex.", "Crypto"
 
 const changes = {
     1: [1.1, 1.2, 0.95, 1.25],
-    2: [0.95, 0.9, 0.95, 1.25],
+    2: [0.95, 0.9, 1.1, 0.9],
     3: [1.15, 1.25, 0.9, 1.2],
     4: [0.9, 0.95, 1.15, 0.95],
     5: [1.1, 1.15, 0.9, 1.8],
     6: [1.05, 1.1, 1.2, 0.7],
-    7: [1.05, 1.05, 1.4, 1.05],
+    7: [1.05, 1.05, 1.45, 1.05],
     8: [1.1, 1.15, 0.8, 1.1],
     9: [1.2, 1.1, 1.1, 1.1],
     10: [0.6, 1.1, 1.1, 1.1],
-    11: [1.05, 1.25, 1.05, 1],
+    11: [1.05, 1.25, 1.05, 1.1],
     12: [1.05, 0.85, 1.05, 1.05]
 }
 
@@ -68,6 +68,7 @@ const crossGain = 10000
 const passMessage = `You passed the starting point again! Here's ${crossGain} for you!`
 
 const Game = (props) => {
+
     const [playerCount, setPlayerCount] = useState(0)
 
     const [playersInfo, setPlayersInfo] = useState([])
@@ -91,9 +92,7 @@ const Game = (props) => {
 
     const sell = (e) => {
         let target;
-        if (e.target.tagName === "SPAN") {
-            
-            
+        if (e.target.tagName === "SPAN") { 
             target = e.target.parentElement
         } else {
             target = e.target
@@ -130,7 +129,6 @@ const Game = (props) => {
         avail.buy = false
         setPlayersInfo([...curPlayersInfo])
         setAvailButtons({...avail})
-
     }
 
     const marketChange = () => {
@@ -187,8 +185,6 @@ const Game = (props) => {
         const curPlayerNum = getActualPlayerNum(turnsElapsed%playerCount)
         let curPlayersInfo = playersInfo
 
-        console.log(gambleValue)
-
         if (gambleValue <= 3) {
             curPlayersInfo[curPlayerNum-1].cash = Math.round(curPlayersInfo[curPlayerNum-1].cash/2, 2)
         } else if (gambleValue == 4 || gambleValue == 5) {
@@ -227,7 +223,11 @@ const Game = (props) => {
 
         let newAvailInvestments = []
         
-        Object.values(investments).forEach(investment => {if (investment.value <= playersInfo[getActualPlayerNum(newTurnsElapsed%playerCount) - 1].cash) {newAvailInvestments.push(investment.name)}})
+        Object.values(investments).forEach(investment => {
+            if (investment.value <= playersInfo[getActualPlayerNum(newTurnsElapsed%playerCount) - 1].cash) {
+                newAvailInvestments.push(investment.name)
+            }
+        })
         
         
         setInvestmentInputState(newAvailInvestments[0])

@@ -230,7 +230,7 @@ const Game = (props) => {
         })
         
         
-        setInvestmentInputState(newAvailInvestments[0])
+        setInvestmentInputState(newAvailInvestments.length > 0 ? newAvailInvestments[0] : "")
 
         
         setAvailButtons({...resetted})

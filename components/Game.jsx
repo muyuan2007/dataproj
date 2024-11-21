@@ -38,7 +38,7 @@ const investmentInfoToIds = {
     "Bitcoin": "14"
 }
 
-const labels = ["Player", "Cash", "Real Estate", "I.T.", "Foreign Ex.", "Crypto", "Net Worth"]
+const labels = ["Player", "Cash", "Real Estate (RE)", "I.T. (IT)", "Foreign Ex. (FX)", "Crypto (CC)", "Net Worth"]
 
 const changes = {
     1: [1.1, 1.2, 0.95, 1.25],

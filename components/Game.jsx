@@ -113,12 +113,13 @@ const Game = (props) => {
         })
         
         setInvestmentInputState(newAvailInvestments.length > 0 ? newAvailInvestments[0] : "")
+        setAvailableInvestments([...newAvailInvestments])
 
         let avail = availButtons
         avail.sell = false
         setPlayersInfo([...curPlayersInfo])
         setAvailButtons({...avail})
-        setAvailableInvestments([...newAvailInvestments])
+        
         
     }
 
@@ -172,6 +173,8 @@ const Game = (props) => {
         avail.bank = false
         setPlayersInfo([...curPlayersInfo])
         setAvailButtons({...avail})
+
+        
     }
 
     const capitalGainsTax = () => {
@@ -223,6 +226,17 @@ const Game = (props) => {
         avail.starting = false
         setPlayersInfo([...curPlayersInfo])
         setAvailButtons({...avail})
+
+        let newAvailInvestments = []
+        
+        Object.values(investments).forEach(investment => {
+            if (investment.value <= curPlayersInfo[playerInfo.player-1].cash) {
+                newAvailInvestments.push(investment.name)
+            }
+        })
+        
+        setInvestmentInputState(newAvailInvestments.length > 0 ? newAvailInvestments[0] : "")
+        setAvailableInvestments([...newAvailInvestments])
     }
 
     const nextTurn = () => {

@@ -6,9 +6,9 @@ import { CallReceived, Check} from "@material-ui/icons"
 
 const baseInvestmentInfo = {
     1: {type: "re", name: "Multifamily", value: 15000},
-    2: {type: "re", name: "Office", value: 40000},
-    3: {type: "re", name: "Casino", value: 85000},
-    4: {type: "re", name: "Factory", value: 150000},
+    2: {type: "re", name: "Office", value: 20000},
+    3: {type: "re", name: "Casino", value: 40000},
+    4: {type: "re", name: "Factory", value: 50000},
     5: {type: "it", name: "Intel (INTC)", value: 1000},
     6: {type: "it", name: "Cisco (CSCO)", value: 3000},
     7: {type: "it", name: "NVIDIA (NVDA)", value: 7000},
@@ -18,7 +18,7 @@ const baseInvestmentInfo = {
     11: {type: "cc", name: "Dogecoin", value: 2000},
     12: {type: "cc", name: "Litecoin", value: 5000},
     13: {type: "cc", name: "Ethereum", value: 10000},
-    14: {type: "cc", name: "Bitcoin", value: 60000}
+    14: {type: "cc", name: "Bitcoin", value: 30000}
 }
 
 const investmentInfoToIds = {

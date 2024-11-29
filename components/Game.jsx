@@ -103,10 +103,22 @@ const Game = (props) => {
         let curPlayersInfo = playersInfo
         curPlayersInfo[playerInfo.player-1].cash += curPlayersInfo[playerInfo.player-1].investments[playerInfo.type]
         curPlayersInfo[playerInfo.player-1].investments[playerInfo.type] = 0
+        
+        let newAvailInvestments = []
+        
+        Object.values(investments).forEach(investment => {
+            if (investment.value <= curPlayersInfo[playerInfo.player-1].cash) {
+                newAvailInvestments.push(investment.name)
+            }
+        })
+        
+        setInvestmentInputState(newAvailInvestments.length > 0 ? newAvailInvestments[0] : "")
+
         let avail = availButtons
         avail.sell = false
         setPlayersInfo([...curPlayersInfo])
         setAvailButtons({...avail})
+        setAvailableInvestments([...newAvailInvestments])
         
     }
 

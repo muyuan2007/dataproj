@@ -230,7 +230,7 @@ const Game = (props) => {
         let newAvailInvestments = []
         
         Object.values(investments).forEach(investment => {
-            if (investment.value <= curPlayersInfo[playerInfo.player-1].cash) {
+            if (investment.value <= curPlayersInfo[curPlayerNum-1].cash) {
                 newAvailInvestments.push(investment.name)
             }
         })

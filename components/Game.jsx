@@ -65,7 +65,7 @@ const topEdgeBorderSpecs = "4px solid black"
 const startingAmount = 30000
 const crossGain = 10000
 
-const passMessage = `You passed the starting point again! Here's ${crossGain} for you!`
+const passMessage = `You passed the starting point again! Here's $${crossGain} for you!`
 
 const Game = (props) => {
 
